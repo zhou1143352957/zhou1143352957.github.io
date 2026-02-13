@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践</title>
+    <url>/2026/02/06/codex-5-2-usage-guide/</url>
+    <content><![CDATA[下面这篇教程面向有经验的开发者，目标是让你把 Codex 当成“工程执行器”来用：从安装配置到结构化工作流，再到高级技巧与排障。内容基于 OpenAI 官方资料整理。
+1. 版本定位：Codex 5.2 是什么
+GPT-5.2-Codex 是 GPT-5.2 在 Codex 场景的工程化优化版本，重点增强了长任务的上下文压缩能力、对大型代码变更（如重构与迁移）的稳定性，并改进了 Windows 环境表现，同时强化了安全能力。
+Codex 是跨多端使用的工程代理：你可以在 App、IDE、CLI 等不同界面中使用同一个 Codex 账户，完成从理解到修改、再到验证的一整套工程任务。
+2. 安装与配置（CLI）
+最直接的入口是 Codex CLI。官方安装方式如下：
+npm i -g @openai/codex
+
+首次运行 codex 会提示你登录（ChatGPT 账号）或使用 API Key。CLI 在本地终端运行，可以读取、修改当前目录的文件并执行命令。由于 CLI 在本地运行，源码默认不会离开你的环境，除非你选择分享或发送。
+升级方式有两种：
+codex --upgrade
+
+或：
+npm i -g @openai/codex@latest
+
+平台支持方面，CLI 正式支持 macOS 与 Linux。Windows 仍是实验支持，建议在 WSL 环境中使用。
+3. 模型选择与默认模型
+官方 changelog 指出：对已用 ChatGPT 登录的用户，CLI 与 IDE 扩展开始默认使用 gpt-5.2-codex。如果你需要稳定一致的模型，建议显式指定。
+你可以在启动时指定：
+codex --model gpt-5.2-codex
+
+也可以在交互界面使用 /model 切换。
+如果你希望长期固定默认模型，可以在 config.toml 中设置：
+model = &quot;gpt-5.2-codex&quot;
+
+4. Approval Modes：安全边界与效率
+Codex CLI 的审批模式决定它能在没有确认的情况下执行到什么程度。官方定义三种模式：Auto、Read-only、Full Access。
+
+Auto（默认）：允许在工作目录内读取、编辑、执行命令，但涉及目录外或网络访问会提示确认。
+Read-only：只浏览文件并给出建议，不会改文件或跑命令。
+Full Access：可跨目录并允许网络访问，不再逐次确认。
+
+切换方式：在交互会话内使用 /permissions。
+实战建议：
+
+复杂任务先用 Read-only 产出方案与风险清单。
+低风险、重复性的变更用 Auto 提效。
+Full Access 只在可信仓库和隔离环境中使用。
+
+5. 基础使用：四段式提示法
+对有经验的开发者，最稳定的上手方式是四段式提示：
+
+目标：你要达成的最终效果。
+边界：不能动的地方或不允许的行为。
+依据：优先参考哪些文件或既有模式。
+验收：你能确认成功的检查点。
+
+示例：
+目标：把登录模块的错误提示统一为一个错误码映射表，并替换现有散落的文案。边界：不改 API 调用路径，不新增第三方依赖。依据：优先参考 src/auth/ 下已有的 utils 与常量文件。验收：编译通过，错误提示不再出现硬编码文本。
+
+这种结构能减少误改与误解需求的概率，也更适合 Codex 的代理式流程。
+6. 高级技巧：用 Codex 处理长任务与重复流程
+Codex CLI 支持非交互式 exec，适合把常见操作脚本化：
+codex exec &quot;fix the CI failure and summarize changes&quot;
+
+这类用法适合重复流程，例如修复测试、更新文档、生成变更摘要。
+更复杂的工程任务可以用“计划驱动”方式：
+
+先让 Codex 总结代码结构与关键入口。
+让它写出多步计划并进行风险提示。
+再执行改动，并在最后输出变更摘要。
+
+Codex 会输出操作记录，你可以用 git 回滚或审查改动。
+7. 为什么优先选 GPT-5.2-Codex
+GPT-5.2-Codex 的优势集中在“工程级任务稳定性”：
+
+更适合长任务的上下文压缩与持续推理。
+更可靠的大规模改动能力，适合重构与迁移。
+Windows 环境表现更好，跨平台更稳。
+
+这也是官方在 Codex 相关更新中强调的升级重点。
+8. 常见问题与排障
+
+为什么没有改文件
+
+你可能处于 Read-only 模式。切换到 Auto 再试。
+
+为什么命令没有执行
+
+Auto 仍需要你批准命令，只有 Full Access 才会自动执行命令。
+
+如何升级 CLI
+
+用 codex --upgrade 或 npm i -g @openai/codex@latest。
+
+Windows 体验不稳定
+
+Windows 属于实验支持，建议在 WSL 中使用。
+9. 实战示例：结构化重构流程
+目标：把分散的错误码定义集中到 src/shared/error_codes.ts，并全局替换硬编码。
+步骤：
+
+解释：让 Codex 总结错误处理逻辑分布。
+计划：让 Codex 给出重构步骤与风险点。
+修改：在 Auto 模式执行变更。
+验收：执行构建或单测确认。
+
+提示词模板：
+目标：把错误码统一集中到 src/shared/error_codes.ts，并替换全局硬编码。边界：不改变 API 响应结构，不新增依赖。依据：参考 src/shared/constants 与 src/api/error_handler。验收：构建通过，错误提示文本不再出现硬编码。
+
+10. 小结
+Codex 5.2 的核心价值是“工程执行力”：它能在清晰目标与边界下稳定推进长任务、跨模块改动与重构。建议的工作节奏是：
+
+Read-only 先探路。
+明确目标、边界与验收。
+Auto 落地修改。
+用验收命令收尾。
+
+当你把流程结构化，GPT-5.2-Codex 的工程能力会非常明显。
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Codex</tag>
+        <tag>工程实践</tag>
+        <tag>CLI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/01/06/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server$ hexo server
+
+More info: Server
+Generate static files$ hexo generate
+
+More info: Generating
+Deploy to remote sites$ hexo deploy
+
+More info: Deployment
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小时候你有没有玩过拳皇97</title>
+    <url>/2026/02/06/night-buffer-zone/</url>
+    <content><![CDATA[小时候你有没有玩过《拳皇97》？
+我每次听到那段熟悉的开场音效，脑子里就会瞬间回到那个年代：街机厅门口人挤人，机器边上永远有人围观，赢的人不走，输的人马上再投一枚币。
+那时候最紧张的不是打电脑，而是和真人对局。你出招慢一点，对面就已经冲脸；你一个失误，全场都能看见。
+街机厅里的“江湖”小时候玩拳皇97，很多记忆都不是“技术”，而是气氛：
+
+攥着硬币排队等机位。
+身后站一圈人，边看边点评。
+一局结束后，大家马上讨论“刚才那下怎么连出来的”。
+
+现在回头看，街机厅像一个很小的社区。我们不认识彼此，却会因为一局对战记住一个人。
+那些年最常听见的名字不同人有不同本命角色，但有些名字几乎人人都练过：
+
+八神庵：节奏凶，压迫感强。
+草薙京：连段顺手，攻守都稳。
+二阶堂红丸：速度快，打起来很飘逸。
+
+当然，最有趣的还是“口口相传”的招式表。很多人并不是看攻略，而是看别人打一次，再自己反复试，直到把手感搓出来。
+为什么拳皇97到现在还被记得它不只是一个游戏，更像是很多人的共同童年坐标：
+
+简单直接，拿起摇杆就能开打。
+对战刺激，赢输都很有情绪价值。
+社交属性强，围观、讨论、复盘都很自然。
+
+后来游戏越来越多，画面越来越好，但那种“围在一台机器前一起喊”的感觉，反而越来越少见了。
+你当年最常用谁如果你也玩过拳皇97，留言告诉我：
+
+你最常用的三个人物是谁？
+你最拿手的一套连招是什么？
+你还记得第一次“守擂成功”是在什么场景吗？
+
+有些游戏会过时，但有些记忆不会。
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>拳皇97</tag>
+        <tag>街机</tag>
+        <tag>回忆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenClaw 为什么最近这么火？我这几天的真实体验</title>
+    <url>/2026/02/13/openclaw-why-hot/</url>
+    <content><![CDATA[这段时间，OpenClaw 在开发者圈讨论度很高。我一开始也以为它只是“又一个聊天机器人壳子”，结果真上手后，发现它的核心不是“会聊”，而是“会干活”。
+这篇就聊三件事：它为什么火、适合谁用、我觉得最该注意什么。
+OpenClaw 到底在解决什么问题一句话：把“对话”变成“执行”。
+以前我们和 AI 的关系是：
+
+提问
+得到建议
+自己手动去做
+
+OpenClaw 想做的是：
+
+你说需求
+它拆解任务
+它直接执行可执行步骤（在你授权范围内）
+
+比如整理邮件、安排日程、跨应用同步信息这类重复工作，它的价值会非常明显。
+为什么它会突然火起来我观察到的原因主要有 4 个。
+
+方向对了大模型从“问答”进入“代理执行”阶段，OpenClaw 正好踩在这个趋势点上。
+
+场景够实用不是炫技 Demo，而是偏日常生产力：消息、日历、文件、流程自动化。
+
+社区传播快开源项目一旦出现“可复用工作流”，扩散速度会很快，尤其在开发者社群里。
+
+心理预期改变了大家对 AI 的期待已经从“回答正确”变成“帮我把事做完”。
+
+
+我觉得它最适合这三类人
+内容创作者固定的信息收集、整理、发布流程可以自动化。
+
+独立开发者一人多角色时，重复性运营动作最耗精力，代理能明显减负。
+
+小团队运营把标准化流程交给代理，团队更专注在判断和创意上。
+
+
+真正上手前，先想清楚这 3 个边界OpenClaw 很强，但不是“开了就无敌”。
+
+权限边界能执行就意味着有权限，权限设计必须保守，先小后大。
+
+数据边界涉及账号、文件、私密信息时，必须区分“可自动执行”和“必须人工确认”。
+
+结果边界代理适合重复流程，不适合高风险决策。关键动作一定要有人工兜底。
+
+
+我的结论OpenClaw 火，不是因为它“更会说话”，而是它把 AI 往“可交付结果”推进了一步。这类工具真正的价值，不在于一句回答多聪明，而在于它能不能稳定、可控地帮你省下时间。
+如果你也在关注 AI Agent，我的建议是：先从一个低风险、可重复的小流程开始，把它跑通，再逐步扩展。别一上来就全自动，先让它“可靠”，再谈“强大”。
+]]></content>
+      <categories>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>OpenClaw</tag>
+        <tag>AI Agent</tag>
+        <tag>自动化</tag>
+      </tags>
+  </entry>
+</search>

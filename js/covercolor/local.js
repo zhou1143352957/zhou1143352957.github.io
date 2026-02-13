@@ -8,9 +8,13 @@ const coverColor = (music = false) => {
         }
     }
     else {
-        const pageColor = PAGE_CONFIG.color || document.getElementById("post-cover")?.src;
-        if (pageColor) {
-            localColor(pageColor);
+        const pageColor = PAGE_CONFIG.color;
+        const coverPath = document.getElementById("post-cover")?.src;
+        // Support per-post color override in front matter, e.g. color: "#5b6f86".
+        if (typeof pageColor === "string" && /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(pageColor)) {
+            setThemeColors(pageColor);
+        } else if (coverPath) {
+            localColor(coverPath);
         } else {
             setDefaultThemeColors();
         }
