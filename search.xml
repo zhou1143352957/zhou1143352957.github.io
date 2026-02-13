@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2026/01/06/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server$ hexo server
+
+More info: Server
+Generate static files$ hexo generate
+
+More info: Generating
+Deploy to remote sites$ hexo deploy
+
+More info: Deployment
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小时候你有没有玩过拳皇97</title>
+    <url>/2026/02/06/night-buffer-zone/</url>
+    <content><![CDATA[小时候你有没有玩过《拳皇97》？
+我每次听到那段熟悉的开场音效，脑子里就会瞬间回到那个年代：街机厅门口人挤人，机器边上永远有人围观，赢的人不走，输的人马上再投一枚币。
+那时候最紧张的不是打电脑，而是和真人对局。你出招慢一点，对面就已经冲脸；你一个失误，全场都能看见。
+街机厅里的“江湖”小时候玩拳皇97，很多记忆都不是“技术”，而是气氛：
+
+攥着硬币排队等机位。
+身后站一圈人，边看边点评。
+一局结束后，大家马上讨论“刚才那下怎么连出来的”。
+
+现在回头看，街机厅像一个很小的社区。我们不认识彼此，却会因为一局对战记住一个人。
+那些年最常听见的名字不同人有不同本命角色，但有些名字几乎人人都练过：
+
+八神庵：节奏凶，压迫感强。
+草薙京：连段顺手，攻守都稳。
+二阶堂红丸：速度快，打起来很飘逸。
+
+当然，最有趣的还是“口口相传”的招式表。很多人并不是看攻略，而是看别人打一次，再自己反复试，直到把手感搓出来。
+为什么拳皇97到现在还被记得它不只是一个游戏，更像是很多人的共同童年坐标：
+
+简单直接，拿起摇杆就能开打。
+对战刺激，赢输都很有情绪价值。
+社交属性强，围观、讨论、复盘都很自然。
+
+后来游戏越来越多，画面越来越好，但那种“围在一台机器前一起喊”的感觉，反而越来越少见了。
+你当年最常用谁如果你也玩过拳皇97，留言告诉我：
+
+你最常用的三个人物是谁？
+你最拿手的一套连招是什么？
+你还记得第一次“守擂成功”是在什么场景吗？
+
+有些游戏会过时，但有些记忆不会。
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>拳皇97</tag>
+        <tag>街机</tag>
+        <tag>回忆</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践</title>
     <url>/2026/02/06/codex-5-2-usage-guide/</url>
     <content><![CDATA[下面这篇教程面向有经验的开发者，目标是让你把 Codex 当成“工程执行器”来用：从安装配置到结构化工作流，再到高级技巧与排障。内容基于 OpenAI 官方资料整理。
@@ -120,74 +188,6 @@ Auto 落地修改。
         <tag>Codex</tag>
         <tag>工程实践</tag>
         <tag>CLI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2026/01/06/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo server
-
-More info: Server
-Generate static files$ hexo generate
-
-More info: Generating
-Deploy to remote sites$ hexo deploy
-
-More info: Deployment
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小时候你有没有玩过拳皇97</title>
-    <url>/2026/02/06/night-buffer-zone/</url>
-    <content><![CDATA[小时候你有没有玩过《拳皇97》？
-我每次听到那段熟悉的开场音效，脑子里就会瞬间回到那个年代：街机厅门口人挤人，机器边上永远有人围观，赢的人不走，输的人马上再投一枚币。
-那时候最紧张的不是打电脑，而是和真人对局。你出招慢一点，对面就已经冲脸；你一个失误，全场都能看见。
-街机厅里的“江湖”小时候玩拳皇97，很多记忆都不是“技术”，而是气氛：
-
-攥着硬币排队等机位。
-身后站一圈人，边看边点评。
-一局结束后，大家马上讨论“刚才那下怎么连出来的”。
-
-现在回头看，街机厅像一个很小的社区。我们不认识彼此，却会因为一局对战记住一个人。
-那些年最常听见的名字不同人有不同本命角色，但有些名字几乎人人都练过：
-
-八神庵：节奏凶，压迫感强。
-草薙京：连段顺手，攻守都稳。
-二阶堂红丸：速度快，打起来很飘逸。
-
-当然，最有趣的还是“口口相传”的招式表。很多人并不是看攻略，而是看别人打一次，再自己反复试，直到把手感搓出来。
-为什么拳皇97到现在还被记得它不只是一个游戏，更像是很多人的共同童年坐标：
-
-简单直接，拿起摇杆就能开打。
-对战刺激，赢输都很有情绪价值。
-社交属性强，围观、讨论、复盘都很自然。
-
-后来游戏越来越多，画面越来越好，但那种“围在一台机器前一起喊”的感觉，反而越来越少见了。
-你当年最常用谁如果你也玩过拳皇97，留言告诉我：
-
-你最常用的三个人物是谁？
-你最拿手的一套连招是什么？
-你还记得第一次“守擂成功”是在什么场景吗？
-
-有些游戏会过时，但有些记忆不会。
-]]></content>
-      <categories>
-        <category>游戏</category>
-      </categories>
-      <tags>
-        <tag>拳皇97</tag>
-        <tag>街机</tag>
-        <tag>回忆</tag>
       </tags>
   </entry>
   <entry>
