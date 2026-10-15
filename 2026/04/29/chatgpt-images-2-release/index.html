@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ChatGPT Images 2.0 发布：首个内置推理的图像生成模型 | ZhouJie</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://i.postimg.cc/SRtgTJX9/head.jpg?v=20260210"><link rel="stylesheet" href="/css/index.css?v=3.0.21"><link rel="canonical" href="http://example.com/2026/04/29/chatgpt-images-2-release/index.html"><link rel="stylesheet" href="https://registry.npmmirror.com/@fortawesome/fontawesome-free/6.7.2/files/css/all.min.css"><!-- Feature-specific CSS--><!-- aplayer--><link rel="stylesheet" href="https://registry.npmmirror.com/aplayer/1.10.1/files/dist/APlayer.min.css"><!-- swiper--><!-- fancybox ui--><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css"><!-- katex--><!-- Open Graph--><meta name="description" content="4月21日，OpenAI正式发布ChatGPT Images 2.0，这是基于全新 gpt-image-2 模型的图像生成系统。与以往任何图像生成工具不同，gpt-image-2 是首个具备内置推理能力的主流图像模型——它在”画画”之前会先”思考”：规划构图、搜索参考资料、自我验证输出。5月12日，"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="ZhouJie"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="https://i.postimg.cc/SRtgTJX9/head.jpg?v=20260210"><link rel="apple-touch-icon" href="https://i.postimg.cc/SRtgTJX9/head.jpg?v=20260210" sizes="180x180"><script>console.log(' %c Solitude %c ' + '3.0.21' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+            },
+            diffDateFormat: (selector) => {
+                selector.forEach(item => {
+                    const date = new Date(item.getAttribute('datetime') || item.textContent);
+                    item.textContent = (date.getMonth() + 1).toString()+'/'+date.getDate().toString();
+                });
+            },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2024-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: true,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."},"barrage":{"title":"热评"}},
+    aside: {
+        state: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        witty_words: ["你可以的","你一定可以的","祝你好运，陌生人","你是最棒滴","我看好你哦","六六六"],
+        witty_comment: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {"avatar":"https://gravatar.com/avatar","commentBarrage":true},
+    lightbox: 'fancybox',
+    right_menu: {"mode":{"dark":"深色模式","light":"浅色模式"},"img_error":"此图片无法复制与下载","music":{"start":"播放音乐","stop":"暂停音乐"},"barrage":{"open":"显示热评","close":"关闭热评"},"translate":true},
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: true,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><div><canvas id="universe"></canvas></div><div><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="https://img.zhoujie.de5.net/img/head.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script></div><div><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude fas fa-xmark"></i></div><div class="console-card-group"><div class="console-card-group-right"><div class="console-card tags" onclick="sco.hideConsole()"><div class="card-content"><div class="author-content-item-tips">标签</div><div class="author-content-item-title">寻找感兴趣的领域</div></div><div class="card-tag-cloud"><a href="/tags/AI/">AI<sup>3</sup></a><a href="/tags/Agentic-AI/">Agentic AI<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型<sup>1</sup></a><a href="/tags/OpenAI/">OpenAI<sup>1</sup></a><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/">图像生成<sup>1</sup></a><a href="/tags/DALL-E/">DALL-E<sup>1</sup></a><a href="/tags/Codex/">Codex<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践<sup>1</sup></a><a href="/tags/CLI/">CLI<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/llama-cpp/">llama.cpp<sup>1</sup></a><a href="/tags/GGUF/">GGUF<sup>1</sup></a><a href="/tags/Windows/">Windows<sup>1</sup></a><a href="/tags/%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/">本地大模型<sup>1</sup></a><a href="/tags/OpenClaw/">OpenClaw<sup>1</sup></a><a href="/tags/AI-Agent/">AI Agent<sup>1</sup></a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化<sup>1</sup></a></div></div><div class="console-card history" onclick="sco.hideConsole()"><ul class="card-archive-list"><li class="item"><a href="/archives/2026/06/"><span class="date">2026/06</span><div class="count-group"><span class="count">1</span><span class="unit">篇</span></div></a></li><li class="item"><a href="/archives/2026/04/"><span class="date">2026/04</span><div class="count-group"><span class="count">2</span><span class="unit">篇</span></div></a></li><li class="item"><a href="/archives/2026/02/"><span class="date">2026/02</span><div class="count-group"><span class="count">2</span><span class="unit">篇</span></div></a></li><li class="item"><a href="/archives/2026/01/"><span class="date">2026/01</span><div class="count-group"><span class="count">1</span><span class="unit">篇</span></div></a></li><li class="item"><a href="/archives/"><span class="date">全部文章</span><div class="count-group"><span class="count">6</span><span class="unit">篇</span></div></a></li></ul></div></div></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude fas fa-circle-half-stroke"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude fas fa-arrows-left-right-to-line"></i></span></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><span class="music-switch" title="音乐开关"><i class="solitude fas fa-compact-disc"></i></span></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><span class="commentBarrage"><i class="solitude fas fa-comment"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div></div><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/recentcomment/"><div class="headline">评论</div><div class="length-num" id="twikoo_allcount"><i class="solitude fas fa-spinner fa-spin"></i></div><script pjax="pjax">(async () => {
+  await fetch('https://twikoo-cloudflare.zhou1143352957.workers.dev', {
+    method: "POST",
+    body: JSON.stringify({
+      "event": "GET_RECENT_COMMENTS",
+      "includeReply": true,
+      "pageSize": 999
+    }),
+    headers: {'Content-Type': 'application/json'}
+  }).then(res => res.json()).then(async ({data}) => {
+    document.querySelector('#twikoo_allcount').innerHTML = data.length
+  })
+})()</script></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fas fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="solitude  fas fa-user-group"></i><span>友情链接</span></a></li><li><a class="site-page child" href="javascript:travelling()"><i class="solitude  fas fa-gift"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  fas fa-user"></i><span>关于</span></a></li><li><a class="site-page child" href="/kit/"><i class="solitude  fas fa-laptop"></i><span>装备</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  fas fa-music"></i><span>音乐馆</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="card-tag-cloud"><a href="/tags/AI/">AI<sup>3</sup></a><a href="/tags/Agentic-AI/">Agentic AI<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型<sup>1</sup></a><a href="/tags/OpenAI/">OpenAI<sup>1</sup></a><a href="/tags/ChatGPT/">ChatGPT<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/">图像生成<sup>1</sup></a><a href="/tags/DALL-E/">DALL-E<sup>1</sup></a><a href="/tags/Codex/">Codex<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践<sup>1</sup></a><a href="/tags/CLI/">CLI<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/llama-cpp/">llama.cpp<sup>1</sup></a><a href="/tags/GGUF/">GGUF<sup>1</sup></a><a href="/tags/Windows/">Windows<sup>1</sup></a><a href="/tags/%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B/">本地大模型<sup>1</sup></a><a href="/tags/OpenClaw/">OpenClaw<sup>1</sup></a><a href="/tags/AI-Agent/">AI Agent<sup>1</sup></a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化<sup>1</sup></a></div></div></div></div><div><div class="needEndHide" id="rightside"><div class="rs_hide"><button class="translate" type="button" title="简繁转换">简</button><button class="mode" type="button" title="显示模式切换" onclick="sco.switchDarkMode()"><i class="fas fa-circle-half-stroke"></i></button><button class="aside pc" type="button" title="侧边栏" onclick="sco.switchHideAside()"><i class="fas fa-arrows-alt-h"></i></button></div><div class="rs_show"><button class="config" type="button" title="扩展" onclick="document.querySelector(&quot;.rs_hide&quot;).classList.toggle(&quot;show&quot;)"><i class="fas fa-gear fa-spin"></i></button><button class="mobile toc" type="button" title="目录" onclick="document.querySelector('#card-toc').classList.toggle('open')"><i class="fas fa-list"></i></button><button class="comment" type="button" title="评论" onclick="sco.scrollTo('post-comment')"><i class="fas fa-comment"></i></button><button class="barrage pc" type="button" title="弹" onclick="sco.switchCommentBarrage()"><span>弹</span></button><button class="top" type="button" title="返回顶部" onclick="sco.toTop()"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a href="/" title="返回博客主页" id="site-name"><span class="title">ZHOU JIE</span><i class="solitude fas fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">ChatGPT Images 2.0 发布：首个内置推理的图像生成模型</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文章</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  fas fa-folder-closed"></i><span>归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  fas fa-clone"></i><span>分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  fas fa-tags"></i><span>标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>友链</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/links/"><i class="solitude  fas fa-user-group"></i><span>友情链接</span></a></li><li><a class="site-page child" href="javascript:travelling()"><i class="solitude  fas fa-gift"></i><span>宝藏博主</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  fas fa-user"></i><span>关于</span></a></li><li><a class="site-page child" href="/kit/"><i class="solitude  fas fa-laptop"></i><span>装备</span></a></li><li><a class="site-page child" href="/music/"><i class="solitude  fas fa-music"></i><span>音乐馆</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="travellings_button"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html" title=""><i class="solitude fas fa-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);"><i class="solitude fas fa-dice-d6"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fas fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);"><label><i class="left"></i><i class="center"></i><i class="right"></i></label></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fas fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://i.postimg.cc/3xdHYHSc/jie-ping-2026-04-29-11-31-31.png" alt="ChatGPT Images 2.0 发布：首个内置推理的图像生成模型"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>AI</span></a><a class="post-meta__tags" href="/tags/OpenAI/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>OpenAI</span></a><a class="post-meta__tags" href="/tags/ChatGPT/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>ChatGPT</span></a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>图像生成</span></a><a class="post-meta__tags" href="/tags/DALL-E/"><span class="tags-name tags-punctuation"><i class="solitude fas fa-hashtag"></i>DALL-E</span></a></div></div></div></div><h1 class="post-title">ChatGPT Images 2.0 发布：首个内置推理的图像生成模型</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-04-29 10:30:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-04-29T02:30:00.000Z">2026-04-29T02:30:00.000Z</time></span><span class="post-meta-commentcount" title="评论数" onclick="sco.scrollTo('post-comment')"><i class="solitude fas fa-comment"></i><a href="/2026/04/29/chatgpt-images-2-release/#post-comment"><span class="twikoo-count"><i class="solitude fas fa-spinner fa-spin"></i></span></a></span></div></div></div><div class="post-radius-bottom"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><p>4月21日，OpenAI正式发布<strong>ChatGPT Images 2.0</strong>，这是基于全新 <strong>gpt-image-2</strong> 模型的图像生成系统。与以往任何图像生成工具不同，gpt-image-2 是首个具备<strong>内置推理能力</strong>的主流图像模型——它在”画画”之前会先”思考”：规划构图、搜索参考资料、自我验证输出。5月12日，DALL-E 2 和 DALL-E 3 将正式退役，一个时代就此落幕。</p>
+<h2 id="从”随机生成”到”推理创作”"><a href="#从”随机生成”到”推理创作”" class="headerlink" title="从”随机生成”到”推理创作”"></a>从”随机生成”到”推理创作”</h2><p>过去三年的图像生成模型，本质上都是”单次射击”的扩散模型——你给一个提示词，模型直接生成一张图，没有规划，没有检查，没有纠错。</p>
+<p>这导致了一系列经典问题：</p>
+<ul>
+<li>文字乱码（六根手指的人）</li>
+<li>风格不一致（同一角色两张图长得不一样）</li>
+<li>引用错误（用2023年的数据生成2026年的新闻图）</li>
+</ul>
+<p>gpt-image-2 的出现改变了这个范式。它引入了<strong>双模式架构</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Instant（即时）</strong></td>
+<td>快速单次生成</td>
+<td>日常使用、轻量创作</td>
+</tr>
+<tr>
+<td><strong>Thinking（思考）</strong></td>
+<td>推理规划 + 网络搜索 + 自我验证</td>
+<td>复杂项目、批量创作</td>
+</tr>
+</tbody></table>
+<p>当启用 Thinking 模式时，模型会经历这样的流程：</p>
+<ol>
+<li><strong>理解需求</strong> - 拆解提示词中的多层指令</li>
+<li><strong>搜索参考</strong> - 联网获取实时素材和数据</li>
+<li><strong>规划构图</strong> - 设计画面结构、光影、色彩</li>
+<li><strong>生成候选</strong> - 产出多张草图</li>
+<li><strong>自我审查</strong> - 检查文字、比例、元素是否正确</li>
+<li><strong>返回结果</strong> - 输出最优结果或最多8张一致性图像</li>
+</ol>
+<p>OpenAI 声称，这种推理机制将用户的<strong>平均重试次数降低了一半以上</strong>。</p>
+<h2 id="五大核心升级"><a href="#五大核心升级" class="headerlink" title="五大核心升级"></a>五大核心升级</h2><h3 id="1-真正的多语言文字渲染"><a href="#1-真正的多语言文字渲染" class="headerlink" title="1. 真正的多语言文字渲染"></a>1. 真正的多语言文字渲染</h3><p>这是 DALL-E 三年来从未跨越的边界。gpt-image-2 现在可以可靠地渲染：</p>
+<ul>
+<li>日语、韩语、中文</li>
+<li>印地语、孟加拉语</li>
+<li>以及所有拉丁字母语言</li>
+</ul>
+<p>对于需要本地化营销素材的全球化团队，这是第一个能生成”可直接使用”内容的图像模型——不再需要设计师手动修复字幕。</p>
+<h3 id="2-八图一致性"><a href="#2-八图一致性" class="headerlink" title="2. 八图一致性"></a>2. 八图一致性</h3><p>一次提示词，生成最多八张图像，全部保持：</p>
+<ul>
+<li>同一角色外观</li>
+<li>相同物体形态</li>
+<li>统一视觉风格</li>
+</ul>
+<p>这意味着什么？你可以用它来：</p>
+<ul>
+<li>生成分格漫画（每个分镜角色一致）</li>
+<li>制作产品营销系列图（同一产品多角度&#x2F;多场景）</li>
+<li>设计故事板（连续画面保持连贯性）</li>
+<li>产出品牌视觉变体（不同尺寸、不同配色，风格统一）</li>
+</ul>
+<h3 id="3-实时网络搜索"><a href="#3-实时网络搜索" class="headerlink" title="3. 实时网络搜索"></a>3. 实时网络搜索</h3><p>在 Thinking 模式下，gpt-image-2 可以在生成过程中联网搜索参考资料——真实产品照片、品牌Logo、建筑细节。这意味着：</p>
+<ul>
+<li>不再依赖2025年12月的训练数据截止点</li>
+<li>可以引用最新的新闻事件、人物、建筑</li>
+<li>生成结果与现实世界保持同步</li>
+</ul>
+<h3 id="4-2K分辨率-超广比例"><a href="#4-2K分辨率-超广比例" class="headerlink" title="4. 2K分辨率 + 超广比例"></a>4. 2K分辨率 + 超广比例</h3><ul>
+<li>分辨率提升至 <strong>2048px</strong>（之前是1024px）</li>
+<li>支持比例从 <strong>3:1（超宽）</strong> 到 <strong>1:3（超长）</strong></li>
+</ul>
+<p>无论是横版海报、竖版短视频封面，还是超宽横幅，统统搞定。</p>
+<h3 id="5-API-深度集成"><a href="#5-API-深度集成" class="headerlink" title="5. API 深度集成"></a>5. API 深度集成</h3><p>gpt-image-2 已集成进 OpenAI 的 Codex 编程环境，开发者可以在编写代码的同时生成视觉素材。API 同样提供 Instant&#x2F;Thinking 两种模式，方便接入自动化流水线。</p>
+<p>以下是 ChatGPT Images 2.0 生成的示例效果：</p>
+<img src="https://i.postimg.cc/25hMSj4j/jie-ping-2026-04-29-11-26-46.png" style="width: 100%; height: 500px; object-fit: contain;" alt="ChatGPT Images 2.0 生成效果示例">
+
+<img src="https://i.postimg.cc/pdz4LVDX/jie-ping-2026-04-29-11-28-45.png" style="width: 100%; height: 500px; object-fit: contain;" alt="多图一致性示例">
+
+<h2 id="竞品对比"><a href="#竞品对比" class="headerlink" title="竞品对比"></a>竞品对比</h2><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>DALL-E 3（即将退役）</th>
+<th>gpt-image-2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>生成流程</td>
+<td>单次扩散</td>
+<td>推理循环 + 自我检查</td>
+</tr>
+<tr>
+<td>最大分辨率</td>
+<td>1024px</td>
+<td>2048px</td>
+</tr>
+<tr>
+<td>比例范围</td>
+<td>方形、16:9、9:16</td>
+<td>3:1 到 1:3</td>
+</tr>
+<tr>
+<td>非拉丁文字</td>
+<td>乱码</td>
+<td>可靠渲染</td>
+</tr>
+<tr>
+<td>多图一致性</td>
+<td>无</td>
+<td>最多8张一致</td>
+</tr>
+<tr>
+<td>实时网络参考</td>
+<td>无</td>
+<td>有（Thinking模式）</td>
+</tr>
+</tbody></table>
+<h2 id="对自动化工作流的意义"><a href="#对自动化工作流的意义" class="headerlink" title="对自动化工作流的意义"></a>对自动化工作流的意义</h2><p>对于正在运行内容营销、产品展示、电商 listing 自动化的企业来说，gpt-image-2 终于将图像生成纳入了可靠的 Agentic 工作流。</p>
+<p>之前的三个主要失败场景：</p>
+<ol>
+<li>❌ 文字错误 → ✅ 自我验证已修复</li>
+<li>❌ 角色不一致 → ✅ 八图一致性已解决</li>
+<li>❌ 数据过时 → ✅ 实时网络搜索已解决</li>
+</ol>
+<p>现在，图像生成可以像代码执行一样可靠：规划、执行、验证、返回。这是自动化流水线需要的契约。</p>
+<h2 id="已知的局限"><a href="#已知的局限" class="headerlink" title="已知的局限"></a>已知的局限</h2><p>OpenAI 坦诚公布了模型的失败场景：</p>
+<ul>
+<li><strong>物理建模</strong>：折纸、魔方、特殊角度物体仍有瑕疵</li>
+<li><strong>细节密度</strong>：大量沙粒、密集纹理等场景表现不稳定</li>
+<li><strong>迭代编辑</strong>：超过前几轮后收益递减</li>
+</ul>
+<p>换句话说：</p>
+<ul>
+<li>✅ 产品主图、清晰主体的营销素材</li>
+<li>✅ 带可读文字的本地化创意</li>
+<li>✅ 风格统一的连续画面</li>
+<li>❌ 超写实物理模拟</li>
+<li>❌ 依赖精细迭代的复杂插画</li>
+</ul>
+<h2 id="定价与可用性"><a href="#定价与可用性" class="headerlink" title="定价与可用性"></a>定价与可用性</h2><table>
+<thead>
+<tr>
+<th>订阅等级</th>
+<th>可用功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Free &#x2F; Go</td>
+<td>Instant模式、标准图像生成</td>
+</tr>
+<tr>
+<td>Plus &#x2F; Pro &#x2F; Business</td>
+<td>Thinking模式、2K分辨率、八图一致性、实时搜索</td>
+</tr>
+<tr>
+<td>API</td>
+<td>所有付费计划可用，Thinking模式按次计费</td>
+</tr>
+</tbody></table>
+<p><strong>重要日期</strong>：DALL-E 2 和 DALL-E 3 将于 <strong>2026年5月12日</strong> 正式停用。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>gpt-image-2 的发布标志着图像生成领域的一个转折点。它不仅仅是参数升级或界面改进，而是一次<strong>架构重构</strong>——将”推理”这个在文本领域证明成功的范式，引入到视觉创作中。</p>
+<p>当图像生成开始像代码执行一样可靠，当AI在画画之前学会思考，创意工作者的工作方式正在被重新定义。</p>
+<p>你准备好迎接这个变化了吗？</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><div class="post-copyright__author_img"><img class="post-copyright__author_img_front" src="https://img.zhoujie.de5.net/img/head.jpg"></div><div class="post-copyright__author_name">Jay</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fas fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><img class="post-qr-code-img nolazyload" src="https://img.zhoujie.de5.net/img/weixin.jpg" alt="微信" style="border-color: var(--efu-black)"><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><img class="post-qr-code-img nolazyload" src="https://img.zhoujie.de5.net/img/zhifubao.jpg" alt="支付宝" style="border-color: var(--efu-black)"><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="social-share"></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">ZhouJie</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-punctuation"><i class="solitude fas fa-hashtag"></i>AI<span class="tagsPageCount">3</span></span></a><a class="post-meta__tags" href="/tags/OpenAI/"><span class="tags-punctuation"><i class="solitude fas fa-hashtag"></i>OpenAI<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/ChatGPT/"><span class="tags-punctuation"><i class="solitude fas fa-hashtag"></i>ChatGPT<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/"><span class="tags-punctuation"><i class="solitude fas fa-hashtag"></i>图像生成<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/DALL-E/"><span class="tags-punctuation"><i class="solitude fas fa-hashtag"></i>DALL-E<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/06/18/llama-cpp-windows-local-ai-guide/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Windows 本地 AI 入门：llama.cpp 官方 Windows 版如何跑 GGUF 模型</div></div></a></div><div class="next-post pull-right"><a href="/2026/04/29/agentic-ai-2026/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2026年AI最火概念：Agentic AI 如何重塑人机协作</div></div></a></div></nav><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="solitude fas fa-comment"></i><span> 评论</span><span class="count"> (<span class="twikoo-count"><i class="solitude fas fa-spinner fa-spin"></i></span>)</span></div></div><div class="comment-wrap"><div id="twikoo-wrap"></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="top-group"><div class="sayhi" id="sayhi" onclick="sco.changeWittyWord()"></div></div></div><div class="avatar"><img alt="头像" src="https://img.zhoujie.de5.net/img/head.jpg"><div class="sticker"><img class="sticker-img" src="https://i.postimg.cc/DZMm1sdY/images.jpg" alt="心情贴纸"></div></div><div class="description">This is my Blog</div><div class="bottom-group"><span class="left"><div class="name">Jay</div><div class="desc"><br> 春风不语，既随本心</div></span><div class="social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/zhou1143352957" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCi0sCjuikqv_oTJk1hKNvag" title="YouTube"><i class="solitude  fab fa-youtube"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fas fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E2%80%9D%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E2%80%9D%E5%88%B0%E2%80%9D%E6%8E%A8%E7%90%86%E5%88%9B%E4%BD%9C%E2%80%9D"><span class="toc-text">从”随机生成”到”推理创作”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%A4%A7%E6%A0%B8%E5%BF%83%E5%8D%87%E7%BA%A7"><span class="toc-text">五大核心升级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%96%87%E5%AD%97%E6%B8%B2%E6%9F%93"><span class="toc-text">1. 真正的多语言文字渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%AB%E5%9B%BE%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">2. 八图一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E6%97%B6%E7%BD%91%E7%BB%9C%E6%90%9C%E7%B4%A2"><span class="toc-text">3. 实时网络搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2K%E5%88%86%E8%BE%A8%E7%8E%87-%E8%B6%85%E5%B9%BF%E6%AF%94%E4%BE%8B"><span class="toc-text">4. 2K分辨率 + 超广比例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-API-%E6%B7%B1%E5%BA%A6%E9%9B%86%E6%88%90"><span class="toc-text">5. API 深度集成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%9E%E5%93%81%E5%AF%B9%E6%AF%94"><span class="toc-text">竞品对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">对自动化工作流的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%B2%E7%9F%A5%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-text">已知的局限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BB%B7%E4%B8%8E%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-text">定价与可用性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-text">写在最后</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fas fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/06/18/llama-cpp-windows-local-ai-guide/" title="Windows 本地 AI 入门：llama.cpp 官方 Windows 版如何跑 GGUF 模型"><div class="thumbnail"><img alt="Windows 本地 AI 入门：llama.cpp 官方 Windows 版如何跑 GGUF 模型" src="https://i.postimg.cc/Gpddgn83/20260518133309-660336-520x292.webp"></div><div class="content"><span class="title" href="/2026/06/18/llama-cpp-windows-local-ai-guide/" title="Windows 本地 AI 入门：llama.cpp 官方 Windows 版如何跑 GGUF 模型">Windows 本地 AI 入门：llama.cpp 官方 Windows 版如何跑 GGUF 模型</span><span class="categories" href="/2026/06/18/llama-cpp-windows-local-ai-guide/">AI工具</span></div></a><a class="aside-list-item" href="/2026/04/29/chatgpt-images-2-release/" title="ChatGPT Images 2.0 发布：首个内置推理的图像生成模型"><div class="thumbnail"><img alt="ChatGPT Images 2.0 发布：首个内置推理的图像生成模型" src="https://i.postimg.cc/3xdHYHSc/jie-ping-2026-04-29-11-31-31.png"></div><div class="content"><span class="title" href="/2026/04/29/chatgpt-images-2-release/" title="ChatGPT Images 2.0 发布：首个内置推理的图像生成模型">ChatGPT Images 2.0 发布：首个内置推理的图像生成模型</span><span class="categories" href="/2026/04/29/chatgpt-images-2-release/">AI工具</span></div></a><a class="aside-list-item" href="/2026/04/29/agentic-ai-2026/" title="2026年AI最火概念：Agentic AI 如何重塑人机协作"><div class="thumbnail"><img alt="2026年AI最火概念：Agentic AI 如何重塑人机协作" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&amp;q=80"></div><div class="content"><span class="title" href="/2026/04/29/agentic-ai-2026/" title="2026年AI最火概念：Agentic AI 如何重塑人机协作">2026年AI最火概念：Agentic AI 如何重塑人机协作</span><span class="categories" href="/2026/04/29/agentic-ai-2026/">科技洞察</span></div></a><a class="aside-list-item" href="/2026/02/13/openclaw-why-hot/" title="OpenClaw 为什么最近这么火？我这几天的真实体验"><div class="thumbnail"><img alt="OpenClaw 为什么最近这么火？我这几天的真实体验" src="https://i.postimg.cc/hjqRRk9F/open-Claw-Cover.png"></div><div class="content"><span class="title" href="/2026/02/13/openclaw-why-hot/" title="OpenClaw 为什么最近这么火？我这几天的真实体验">OpenClaw 为什么最近这么火？我这几天的真实体验</span><span class="categories" href="/2026/02/13/openclaw-why-hot/">AI</span></div></a><a class="aside-list-item" href="/2026/02/06/codex-5-2-usage-guide/" title="Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践"><div class="thumbnail"><img alt="Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践" src="https://i.postimg.cc/FsRxSf2K/codex-Setting.png"></div><div class="content"><span class="title" href="/2026/02/06/codex-5-2-usage-guide/" title="Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践">Codex 5.2（GPT-5.2-Codex）使用教程：安装配置、基础到进阶实践</span><span class="categories" href="/2026/02/06/codex-5-2-usage-guide/">工具</span></div></a></div></div><div class="card-widget card-recent-comment"><div class="item-headline"><i class="solitude fas fa-comment"></i><span>最近评论</span><a class="recent-comment-more" href="/recentcomment/" title="最近评论"><i class="solitude fas fa-circle-chevron-right"></i></a></div><div class="aside-list"></div><script>(() => {
+    const changeContent = (content) => {
+        if (!content) return '';
+        const replacements = [
+            {regex: /<img.*?src="(.*?)"?[^\>]+>/ig, replacement: '[图片]'},
+            {
+                regex: /<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi,
+                replacement: '[链接]'
+            },
+            {regex: /<pre><code>.*?<\/pre>/gi, replacement: '[代码]'},
+            {regex: /<[^>]+>/g, replacement: ''}
+        ]
+        content = replacements.reduce((str, {regex, replacement}) => str.replace(regex, replacement), content)
+        return content.length > 150 ? `${content.substring(0, 100)}...` : content
+    }
+    const generateHtml = (array) => {
+        const html = array.map(item => `
+            <div class='aside-list-item'>
+                <div class='thumbnail'>
+                    <img src='${item.avatar}' alt='${item.nick}'>
+                </div>
+                <div class='content'>
+                    <div class='comment' onclick='pjax.loadUrl("${item.url}")'>${item.content}</div>
+                    <time class="datetime" datetime="${item.date}"></time>
+                </div>
+            </div>
+        `).join('')
+        document.querySelector('.card-recent-comment .aside-list').innerHTML = array.length ? html : "没有评论"
+        window.lazyLoadInstance?.update()
+        window.pjax?.refresh()
+        sco?.changeTimeFormat(document.querySelectorAll('.aside-list-item time'))
+    }
+    const getComment = async () => {
+        const runTwikoo = () => {
+            twikoo.getRecentComments({
+                envId: 'https://twikoo-cloudflare.zhou1143352957.workers.dev',
+                region: '',
+                pageSize: 5,
+                includeReply: true
+            }).then(res => {
+                const twikooArray = res.map(e => ({
+                    content: changeContent(e.comment),
+                    avatar: e.avatar,
+                    nick: e.nick,
+                    url: `${e.url}#${e.id}`,
+                    date: new Date(e.created).toString()
+                })).slice(0, 6)
+                utils.saveToLocal.set('twikoo-newest-comment', twikooArray, 0.5)
+                generateHtml(twikooArray)
+            }).catch((err) => {
+                console.error(err);
+                document.querySelector('.card-recent-comment .aside-list').textContent = "无法获取评论，请确认相关配置是否正确。"
+            })
+        }
+        if (typeof twikoo === 'object') {
+            runTwikoo()
+        } else {
+            utils.getScript('https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js').then(runTwikoo)
+        }
+    }
+    const newestCommentInit = () => {
+        if (!document.querySelector('.card-recent-comment')) return
+        const data = utils.saveToLocal.get('twikoo-newest-comment')
+        data ? generateHtml(data) : getComment()
+    }
+    window.addEventListener('DOMContentLoaded', newestCommentInit, false)
+    window.addEventListener('pjax:complete', newestCommentInit, false);
+})()</script></div></div></div></main><footer id="footer"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/zhou1143352957" title="Github"><i class="solitude  fab fa-github"></i></a><a class="deal_link" href="mailto:zhou1143352957@gmail.com" title="Mail"><i class="solitude  far fa-envelope"></i></a><div><div class="nolazyload footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src="https://img.zhoujie.de5.net/img/head.jpg" alt="返回顶部"></div></div><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/1329819902" title="Bilibili"><i class="solitude  fab fa-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.tiktok.com/@seckill5?_r=1&amp;_t=ZP-93Kf3U0z1dG" title="Tiktok"><i class="solitude  fab fa-tiktok"></i></a></div><div><div id="st-footer"><div class="footer-group"><h3 class="footer-title">导航</h3><div class="footer-links"><a class="footer-item" href="/archives/" title="归档">归档</a><a class="footer-item" href="/categories/" title="分类">分类</a><a class="footer-item" href="/tags/" title="标签">标签</a></div></div><div class="footer-group"><h3 class="footer-title">我的</h3><div class="footer-links"><a class="footer-item" href="/about/" title="关于">关于</a><a class="footer-item" href="/kit/" title="装备">装备</a><a class="footer-item" href="/music/" title="音乐馆">音乐馆</a><a class="footer-item" href="/privacy/" title="隐私政策">隐私政策</a><a class="footer-item" href="/copyright/" title="版权声明">版权声明</a></div></div><div class="footer-group"><div class="footer-title-group"><h3 class="footer-title">友链</h3><button class="random-friends-btn" onclick="randomLinksList()" title="友链"><i class="solitude fas fa-arrows-rotate"></i></button></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2024 - 2026 By<a class="footer-bar-link" href="/" title="Jay">Jay</a></div><div class="beian-group"></div></div><div class="footer-bar-right"></div></div></div><div><div class="comment-barrage needEndHide"></div></div></footer></div><div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="solitude fas fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="solitude fas fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="solitude fas fa-arrows-rotate"></i></div><div class="rightMenu-item" id="menu-top"><i class="solitude fas fa-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="solitude fas fa-clone"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="solitude fas fa-clipboard"></i><span>粘贴文本</span></div><div class="rightMenu-item" id="menu-commenttext"><i class="solitude fas fa-comment-medical"></i><span>引用到评论</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="solitude far fa-window-maximize"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="solitude fas fa-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="solitude fas fa-clone"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="solitude fas fa-cloud-arrow-down"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-search"><i class="solitude fas fa-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="solitude fas fa-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="solitude fas fa-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="solitude fas fa-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="solitude fas fa-clone"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><div class="rightMenu-item" id="menu-commentBarrage" onclick="sco.switchCommentBarrage()"><i class="solitude fas fa-comment"></i><span class="menu-commentBarrage-text">关闭热评</span></div><div class="rightMenu-item" id="menu-darkmode" onclick="sco.switchDarkMode()"><i class="solitude fas fa-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></div><div class="rightMenu-item" id="menu-translate"><i class="solitude fas fa-language"></i><span>轉為繁體</span></div></div></div><div id="rightmenu-mask"></div></div><div><!-- Critical scripts loaded synchronously--><script src="/js/utils.js?v=3.0.21"></script><script src="/js/main.js?v=3.0.21"></script><!-- Non-critical scripts loaded asynchronously--><script async src="/js/third_party/waterfall.min.js?v=3.0.21"></script><script src="https://registry.npmmirror.com/pjax/0.2.8/files/pjax.min.js"></script><!-- Feature-specific scripts loaded asynchronously--><script defer src="https://unpkg.com/typeit@8.8.7/dist/index.umd.js"></script><script defer src="/js/third_party/universe.min.js?v=3.0.21"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  if (typeof dark === 'function') dark();
+});
+</script><script defer src="/js/tw_cn.js?v=3.0.21"></script><!-- UI enhancement scripts--><script defer src="https://unpkg.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script src="https://unpkg.com/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js"></script><script defer src="/js/post_ai.js?v=3.0.21"></script><!-- Music player scripts--><script>var meting_api = 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r';</script><script defer src="https://registry.npmmirror.com/aplayer/1.10.1/files/dist/APlayer.min.js"></script><script defer src="https://registry.npmmirror.com/meting/2.0.1/files/dist/Meting.min.js"></script><!-- Cover color processing scripts--><script defer src="https://registry.npmmirror.com/colorthief/2.6.0/files/dist/color-thief.min.js"></script><script defer src="/js/covercolor/local.js?v=3.0.21"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://registry.npmmirror.com/pace-js/1.2.4/files/pace.min.js"></script><!-- Search functionality--><!-- Right menu functionality--><script defer src="/js/right_menu.js?v=3.0.21"></script><div class="js-pjax"><script>(() => {
+    const getCount = () => {
+        const ele = document.querySelectorAll('.twikoo-count')
+        if (!ele) return
+        twikoo.getCommentsCount({
+            envId: 'https://twikoo-cloudflare.zhou1143352957.workers.dev',
+            region: '',
+            urls: [window.location.pathname],
+            includeReply: false
+        }).then(res => {
+            ele.forEach(item => item.textContent = res[0].count)
+        }).catch(err => {
+            console.error(err)
+        })
+    }
+    const init = () => {
+        twikoo.init(Object.assign({
+            el: '#twikoo-wrap',
+            envId: 'https://twikoo-cloudflare.zhou1143352957.workers.dev',
+            region: '',
+            path: window.location.pathname,
+            onCommentLoaded: () => {
+                GLOBAL_CONFIG.lightbox && utils.lightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+            }
+        }, null))
+
+         && getCount()
+        sco.owoBig({
+            body: '.OwO-body',
+            item: '.OwO-items li'
+        })
+
+        true && barrageTwikoo()
+    }
+
+    const loadTwikoo = () => {
+        if (typeof twikoo === 'object') setTimeout(init,0)
+        else utils.getScript('https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js').then(init)
+    }
+
+    if ('Twikoo' === 'Twikoo' || true) {
+        if (true) utils.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+        else loadTwikoo()
+    } else {
+        window.loadTwoComment = loadTwikoo
+    }
+})()
+</script><script>async function barrageTwikoo() {
+    await fetch("https://twikoo-cloudflare.zhou1143352957.workers.dev", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            event: "COMMENT_GET",
+            accessToken: "",
+            url: window.location.pathname
+        })
+    }).then(async res => {
+        if (!res.ok) throw new Error("HTTP error! status: " + res.status)
+        const data = await res.json();
+        const init = () => {
+            initializeCommentBarrage((data.data).map(item => Object.assign({
+                content: item.comment,
+                nick: item.nick,
+                mailMd5: item.mailMd5,
+                id: item.id
+            })))
+        }
+        if (typeof initializeCommentBarrage === "undefined") await utils.getScript('/js/third_party/barrage.min.js?v=3.0.21').then(init)
+        else init()
+    }).catch(error => console.error("An error occurred while fetching comments: ", error))
+}</script></div></div><script>const links = [{"name":"Hexo","link":"https://hexo.io/zh-cn/"},{"name":"张洪Heo","link":"https://blog.zhheo.com/"},{"name":"Solitude","link":"https://solitude.js.org/"},{"name":"❖星港◎Star☆","link":"https://blog.starsharbor.com"},{"name":"Mo的记事簿","link":"https://blog.xiowo.net/"}]
+const randomText = '点击前往按钮进入随机一个友链，不保证跳转网站的安全性和可用性。本次随机到的是本站友链：⌈ ${name} ⌋'
+function travelling() {
+    const link = links[utils.randomNum(links.length)];
+    Snackbar.show({
+        text: randomText.replace(/\$\{name}/,link.name),
+        duration: 8000,
+        pos: 'top-center',
+        actionText: '前往',
+        onActionClick: function(element) {
+            element.style.opacity = 0;
+            window.open(link.link, '_blank');
+        }
+    });
+}
+</script><script>function randomLinksList() {
+    const linkcard = document.getElementById('friend-links-in-footer');
+    if (linkcard == null) return;
+
+    let data = '';
+    let linksCopy = [...links];
+    let count = Math.min(3, linksCopy.length);
+
+    for (let i = 0; i < count; i++) {
+        let index = utils.randomNum(linksCopy.length);
+        const {link, name} = linksCopy[index];
+        data += `<a class="footer-item" href="${link}" target="_blank" rel="noopener noreferrer nofollow">${name}</a>`;
+        linksCopy.splice(index, 1);
+    }
+
+    linkcard.innerHTML = data + '<a class="footer-item" href="/links/">更多</a>';
+}</script><!-- pjax--><script>let pjax = null;
+
+function initPjax() {
+    if (typeof Pjax === 'undefined') {
+        console.warn('Pjax is not loaded yet, retrying...');
+        setTimeout(initPjax, 100);
+        return;
+    }
+
+    pjax = new Pjax({
+        elements: 'a:not([target="_blank"])',
+        selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+        cacheBust: false,
+        analytics: false,
+        scrollRestoration: false
+    })
+
+    // 将 pjax 实例挂载到全局
+    window.pjax = pjax;
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    document.addEventListener('pjax:complete', () => {
+        window.refreshFn()
+
+        document.querySelectorAll('script[data-pjax]').forEach(item => {
+            const newScript = document.createElement('script')
+            const content = item.text || item.textContent || item.innerHTML || ""
+            Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+            newScript.appendChild(document.createTextNode(content))
+            item.parentNode.replaceChild(newScript, item)
+        })
+
+        GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+    })
+
+    document.addEventListener('pjax:error', (e) => {
+        if (e.request.status === 404) {
+            pjax.loadUrl('/404.html')
+        }
+    })
+}
+
+// 初始化 Pjax
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPjax);
+} else {
+    initPjax();
+}</script><!-- google adsense--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fas fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=3.0.21"></script><div><div class="needEndHide" id="nav-music"><div id="nav-music-hoverTips"><i class="music-control-btn fas fa-backward-step" id="music-prev" onclick="sco.musicSkipBack()"></i><i class="music-control-btn fas fa-pause" id="music-pause" onclick="sco.musicToggle()"></i><i class="music-control-btn fas fa-play" id="music-play" onclick="sco.musicToggle()"></i><i class="music-control-btn fas fa-forward-step" id="music-next" onclick="sco.musicSkipForward()"></i></div><meting-js id="7202007377" server="netease" type="playlist" mutex="true" preload="none" theme="var(--efu-main)" data-lrctype="0" order="random" volume="0.8"></meting-js></div></div></body></html>
+        <script>
+            const posts = ["2026/06/18/llama-cpp-windows-local-ai-guide/","2026/04/29/chatgpt-images-2-release/","2026/04/29/agentic-ai-2026/","2026/02/13/openclaw-why-hot/","2026/02/06/codex-5-2-usage-guide/","2026/01/06/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
